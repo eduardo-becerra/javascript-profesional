@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    Function.prototype.call, Function.prototype.apply, Function.prototype.bind
+  </title>
+</head>
+
+<body>
+  <a href="index.html">Go back</a>
+  <p><em>Abre la consola</em></p>
+
+  <ul>
+    <li><button class="call-to-action">Aprender</button></li>
+    <li><button class="call-to-action">Aprender Más</button></li>
+    <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+  </ul>
+
+  <script>
+    // Establece `this` usando `call`
+    function greet() {
+      console.log(`Hola. Soy ${this.firstName} ${this.lastName}`);
+    }
+
+    const richard = {
+      firstName: 'Richard',
+      lastName: 'Kaufman López',
+    };
+
+    greet.call(richard);
+
+    // Establece `this` usando `call` y pasar argumentos a la función
+    function walk(meters, direction) {
+      console.log(`${this.firstName} camina ${meters} metros hacia ${direction}.`);
+    }
+
+    walk.call(richard, 400, 'norte');
+
+    // Establece `this` usando `apply` y pasar argumentos a la función
+    const values = [800, 'noreste'];
+    walk.apply(richard, values);
+
+    /*
+      Call - comma
+      Apply - arreglo
+    */
+
+    // Establecer `this` en una nueva función usando `bind`
+    const daniel = {firstName: 'Daniel', lastName: 'Sánchez'};
+    const danielGreet = greet.bind(daniel);
+    danielGreet();
+
+    const danielWalk = walk.bind(daniel, 2000);
+    danielWalk('oeste');
+
+    // Cuándo es útil usar uno de estos métodos
+    const buttons = document.getElementsByClassName('call-to-action');
+
+    // NodeList
+    Array.prototype.forEach.call(buttons, button => {
+      button.onclick = () => alert('¡Nunca pares de aprender!');
+    });
+  </script>
+</body>
+
+</html>
