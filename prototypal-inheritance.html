@@ -34,23 +34,26 @@
 
     const zelda = new Hero('Zelda');
 
-    // propiedades de la instancia
-    console.log('Name:', zelda.name); // Zelda
-    // método de la "clase"
-    zelda.saludar(); // Hola, soy Zelda.
+    // Propiedades de la instancia
+    console.log('Name:', zelda.name);
 
-    // propiedades heredadas, por ejemplo: toString
-    console.log('toString:', zelda.toString); // function toString() { [native code] }
+    // Método de la "clase"
+    zelda.saludar();
 
-    // hasOwnProperty (de dónde sale toString o esto?)
-    console.log('zelda.hasOwnProperty("saludar"):', zelda.hasOwnProperty('saludar')); // false
+    // Propiedades heredadas: toString
+    console.log('zelda.toString():', zelda.toString());
 
-    // inspeccionemos el prototipo de zelda
-    console.log('Prototipo de zelda:', Object.getPrototypeOf(zelda)); // Hero.prototype
-    // inspeccionemos el prototipo de Hero
-    console.log('Prototipo de Hero:', Object.getPrototypeOf(Hero.prototype)); // Object.prototype
-    // inspeccionemos el prototipo de Object
-    console.log('Prototipo de Object:', Object.getPrototypeOf(Object.prototype)); // null
+    // Propiedades heredadas: hasOwnProperty
+    console.log('zelda.hasOwnProperty("saludar"):', zelda.hasOwnProperty('saludar'));
+
+    // Prototipo de zelda
+    console.log('Prototipo de zelda:', Object.getPrototypeOf(zelda));
+
+    // Prototipo de Hero
+    console.log('Prototipo de Hero:', Object.getPrototypeOf(Hero.prototype));
+
+    // Prototipo de Object
+    console.log('Prototipo de Object:', Object.getPrototypeOf(Object.prototype));
   </script>
 </body>
 
