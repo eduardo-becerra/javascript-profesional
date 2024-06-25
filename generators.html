@@ -14,7 +14,7 @@
   <script>
     // Los generadores son funciones de las que se puede salir y volver a entrar.
     // Su contexto (asociación de variables) será conservado entre las reentradas.
-    // Cada vez que llamamos next, la ejecución del generador va a continuar hasta el proximo yield
+    // Cada vez que llamamos next, la ejecución del generador va a continuar hasta el próximo yield
     function* simpleGenerator() {
       console.log('GENERATOR START');
       yield 1;
@@ -23,7 +23,11 @@
       console.log('GENERATOR END');
     }
 
-    // const gen = simpleGenerator();
+    const gen = simpleGenerator();
+    console.log(gen.next().value); // GENERATOR START, 1
+    console.log(gen.next().value); // 2
+    console.log(gen.next().value); // 3
+    console.log(gen.next().done);  // GENERATOR END, true
 
     // Podemos hacer generadores infinitos.
     function* idMaker() {
@@ -33,6 +37,11 @@
         id = id + 1;
       }
     }
+
+    const idGen = idMaker();
+    console.log(idGen.next().value); // 1
+    console.log(idGen.next().value); // 2
+    console.log(idGen.next().value); // 3
 
     // Cuando llamamos next también podemos pasar valores que la función recibe.
     function* idMakerWithReset() {
@@ -48,6 +57,12 @@
       }
     }
 
+    const idResetGen = idMakerWithReset();
+    console.log(idResetGen.next().value);     // 1
+    console.log(idResetGen.next().value);     // 2
+    console.log(idResetGen.next(true).value); // 1 (reset)
+    console.log(idResetGen.next().value);     // 2
+
     // Ahora hagamos un ejemplo un poco más complejo: la secuencia fibonacci
     function* fibonacci() {
       let a = 1;
@@ -59,6 +74,12 @@
         yield nextNumber;
       }
     }
+
+    const fibGen = fibonacci();
+    console.log(fibGen.next().value); // 2
+    console.log(fibGen.next().value); // 3
+    console.log(fibGen.next().value); // 5
+    console.log(fibGen.next().value); // 8
   </script>
 </body>
 
