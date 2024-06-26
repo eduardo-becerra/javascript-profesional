@@ -1,31 +1,31 @@
 // Enumeración para los colores
 enum Color {
-  Rojo = "Rojo",
-  Verde = "Verde",
+  Red = "Rojo",
+  Green = "Verde",
 }
 
 // Interfaz para los rectángulos
-interface Rectangulo {
-  ancho: number;
-  alto: number;
+interface Rectangle {
+  width: number;
+  height: number;
   color?: Color;
 }
 
 // Creación de un rectángulo con las propiedades ancho y alto
-let rect: Rectangulo = {
-  ancho: 4,
-  alto: 6,
-  // color: Color.Rojo, // Descomentar si se quiere asignar un color
+let rect: Rectangle = {
+  width: 4,
+  height: 6,
+  // color: Color.Red,
 };
 
 // Función para calcular el área de un rectángulo
-function area(r: Rectangulo): number {
-  return r.alto * r.ancho;
+function area(r: Rectangle): number {
+  return r.height * r.width;
 }
 
 // Cálculo del área del rectángulo
-const areaRect = area(rect);
-console.log(areaRect); // Salida: 24
+const rectArea = area(rect);
+console.log(rectArea); // Salida: 24
 
 // Añadiendo el método toString a la instancia rect
 rect = Object.assign(rect, {
